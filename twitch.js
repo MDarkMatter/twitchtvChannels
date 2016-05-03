@@ -14,5 +14,9 @@ function callApi(){
 }
 
 function buildIt(data){
-    $('.results').append('<a href=' + data._links.self +'><div class="well">' + data.stream.channel.display_name + '</div></a>');
+  if(data.stream == null){
+    $('.results').append('<p>nope</p');
+  } else {
+    $('.results').append('<div class="well">' + data.stream.channel.display_name + '</div></a>');
+}
 }

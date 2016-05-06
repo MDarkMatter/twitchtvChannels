@@ -12,19 +12,18 @@ function callApi(){
   }
 }
 
-
-// function online(data){
-//   console.log(data);
-//
-// }
-//
-// function offline(data){
-//   console.log('offline');
-// }
-//
-// function closed(data){
-//  console.log('closed');
-// }
+// What to build
+//        <div class="well clearfix">
+//             <div class="col-sm-4">
+//                 <h1>Test</h1>
+//             </div>
+//             <div class="col-sm-4 ">
+//                 <h2>Game</h1>
+//             </div>
+//             <div class="col-sm-4 ">
+//                 <h2>status</h2>
+//             </div>
+//         </div>
 
 
 function buildIt(data){
@@ -33,6 +32,6 @@ function buildIt(data){
  } else if (data.stream == null){
     $('.results').append('<p>offline</p>');
   } else {
-    $('.results').append('<div class="well">' + data.stream.channel.display_name + '</div></a>');
+    $('.results').append('<div class="well clearfix"><div class="col-sm-4"><h3>' + data.stream.channel.display_name + '</h3></div><div class="col-sm-4"><h3>' + data.stream.channel.game +'</div><div class="col-sm-4"><h3>' + data.stream.channel.status + '</h3></div></div>');
 }
 }

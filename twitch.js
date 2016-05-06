@@ -32,6 +32,6 @@ function buildIt(data){
  } else if (data.stream == null){
     $('.results').append('<p>offline</p>');
   } else {
-    $('.results').append('<div class="well clearfix"><div class="col-sm-4"><h3>' + data.stream.channel.display_name + '</h3></div><div class="col-sm-4"><h3>' + data.stream.channel.game +'</div><div class="col-sm-4"><h3>' + data.stream.channel.status + '</h3></div></div>');
+    $('.results').append('<a href=' + data.stream.channel.url + '><div class="well clearfix"><div class="col-sm-4"><h3>' + data.stream.channel.display_name + '</h3></div><div class="col-sm-4"><h3>' + data.stream.channel.game +'</div><div class="col-sm-4"><h3>Online</h3></div></div></a>');
 }
 }

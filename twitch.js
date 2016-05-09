@@ -5,33 +5,22 @@ function callApi(){
       url: 'https://api.twitch.tv/kraken/streams/'+channels[i],
       jsonp: "callback",
       dataType: "jsonp",
+      testData: channels[i],
       success: function(data){
-        buildIt(data);
+        var chan = this.testData;
+        buildIt(data, chan);
       }
     });
   }
 }
 
-// What to build
-//        <div class="well clearfix">
-//             <div class="col-sm-4">
-//                 <h1>Test</h1>
-//             </div>
-//             <div class="col-sm-4 ">
-//                 <h2>Game</h1>
-//             </div>
-//             <div class="col-sm-4 ">
-//                 <h2>status</h2>
-//             </div>
-//         </div>
 
-
-function buildIt(data){
+function buildIt(data, chan){
   if (data.status == 422){
-   $('.results').append("<p>closed</p>");
+   $('.results').append('<a href= http://www.twitch.tv/' + chan + '><div class="well clearfix"><div class="col-sm-4"><h3>' + chan + '</h3></div><div class="col-sm-4"><h3>does not exist</h3></div></a>');
  } else if (data.stream == null){
-    $('.results').append('<p>offline</p>');
+    $('.results').append('<a href= http://www.twitch.tv/' + chan + '><div class="well clearfix"><div class="col-sm-4"><h3>' + chan + '</h3></div><div class="col-sm-4"><h3>Offline</h3></div></a>');
   } else {
-    $('.results').append('<a href=' + data.stream.channel.url + '><div class="well clearfix"><div class="col-sm-4"><h3>' + data.stream.channel.display_name + '</h3></div><div class="col-sm-4"><h3>' + data.stream.channel.game +'</div><div class="col-sm-4"><h3>Online</h3></div></div></a>');
+    $('.results').append('<a href=' + data.stream.channel.url + '><div class="well clearfix"><div class="col-sm-4"><h3>' + data.stream.channel.display_name + '</h3></div><div class="col-sm-4"><h3>Online</div><div class="col-sm-4"><h3>' + data.stream.channel.game +'</h3></div></div></a>');
 }
 }
